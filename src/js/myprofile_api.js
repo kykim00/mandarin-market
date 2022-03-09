@@ -39,7 +39,7 @@ productList.addEventListener("mousemove", (e) => {
 });
 
 async function getProfile() {
-  const url = `http://146.56.183.55:5050/profile/${myAccountName}`;
+  const url = `https://api.mandarin.cf/profile/${myAccountName}`;
   const res = await fetch(url, {
     method: "GET",
     headers: {
@@ -60,7 +60,7 @@ async function getProfile() {
 }
 
 async function getProductList() {
-  const url = `http://146.56.183.55:5050/product/${myAccountName}`;
+  const url = `https://api.mandarin.cf/product/${myAccountName}`;
   const res = await fetch(url, {
     method: "GET",
     headers: {
@@ -71,7 +71,7 @@ async function getProductList() {
   const json = await res.json();
   json.product.forEach((item) => {
     let { itemName, itemImage, price } = item;
-    itemImage = "http://146.56.183.55:5050/" + itemImage;
+    itemImage = "https://api.mandarin.cf/" + itemImage;
     productList.innerHTML += `
       <article class="product_card">
         <img
@@ -86,7 +86,7 @@ async function getProductList() {
 }
 
 async function getFeed() {
-  const url = `http://146.56.183.55:5050/post/${myAccountName}/userpost/?limit=100&skip=0`;
+  const url = `https://api.mandarin.cf/post/${myAccountName}/userpost/?limit=100&skip=0`;
   const res = await fetch(url, {
     method: "GET",
     headers: {
@@ -225,7 +225,7 @@ async function getFeed() {
 }
 
 async function getProductList() {
-  const url = `http://146.56.183.55:5050/product/${myAccountName}`;
+  const url = `https://api.mandarin.cf/product/${myAccountName}`;
   const res = await fetch(url, {
     method: "GET",
     headers: {
@@ -236,9 +236,9 @@ async function getProductList() {
   const json = await res.json();
   json.product.forEach((item) => {
     let { itemName, itemImage, price, link } = item;
-    itemImage = itemImage.includes("http://146.56.183.55:5050/")
+    itemImage = itemImage.includes("https://api.mandarin.cf/")
       ? itemImage
-      : "http://146.56.183.55:5050/" + itemImage;
+      : "https://api.mandarin.cf/" + itemImage;
     productList.innerHTML += `
       <article class="product_card">
         <a ${link.includes("http") ? `href=${link}` : ``}>
@@ -255,7 +255,7 @@ async function getProductList() {
 }
 
 async function getLike(postId) {
-  const url = `http://146.56.183.55:5050/post/${postId}/heart`;
+  const url = `https://api.mandarin.cf/post/${postId}/heart`;
   await fetch(url, {
     method: "POST",
     headers: {
@@ -266,7 +266,7 @@ async function getLike(postId) {
 }
 
 async function getUnLike(postId) {
-  const url = `http://146.56.183.55:5050/post/${postId}/unheart`;
+  const url = `https://api.mandarin.cf/post/${postId}/unheart`;
   await fetch(url, {
     method: "DELETE",
     headers: {
@@ -277,7 +277,7 @@ async function getUnLike(postId) {
 }
 
 async function getDeleteFeed(postId) {
-  const url = `http://146.56.183.55:5050/post/${postId}`;
+  const url = `https://api.mandarin.cf/post/${postId}`;
   await fetch(url, {
     method: "DELETE",
     headers: {
