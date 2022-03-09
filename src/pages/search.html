@@ -1,47 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/search.css" />
+    <title>감귤마켓 | 검색</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/reset.css" />
-  <link rel="stylesheet" href="../css/search.css" />
-  <title>감귤마켓 | 검색</title>
-</head>
+  <body>
+    <header class="search_header">
+      <h1 class="sr-only">검색</h1>
+      <div class="search_wrap">
+        <button type="button" class="btn_back">
+          <a href="home.html"
+            ><img src="../images/icon/icon-arrow-left.png" alt="뒤로가기"
+          /></a>
+        </button>
+        <input type="text" class="input_search" placeholder="계정 검색" />
+      </div>
+    </header>
+    <main class="main_search">
+      <ul class="list_searchResult"></ul>
+    </main>
 
-<body>
-  <header class="search_header">
-    <h1 class="sr-only">검색</h1>
-    <div class="search_wrap">
-      <button type="button" class="btn_back">
-        <a href="home.html"><img src="../images/icon/icon-arrow-left.png" alt="뒤로가기" /></a>
-      </button>
-      <input type="text" class="input_search" placeholder="계정 검색" onclick="inputData()" />
-    </div>
-  </header>
-  <main class="main_search">
-    <ul class="list_searchResult"></ul>
-  </main>
-
-  <footer id="footer_chatList" class="footer_chatList">
-    <h2 class="sr-only">메뉴 목록</h2>
-    <ul class="list_nav">
-      <li>
-        <a href="" class="item_menu"><img src="../images/icon/icon-home-fill.png" alt="" /><small>홈</small></a>
-      </li>
-      <li>
-        <a href="" class="item_menu"><img src="../images/icon/icon-message-circle.png" alt="" /><small>채팅</small></a>
-      </li>
-      <li>
-        <a href="" class="item_menu"><img src="../images/icon/icon-edit.png" alt="" /><small>게시물 작성</small></a>
-      </li>
-      <li>
-        <a href="" class="item_menu"><img src="../images/icon/icon-user.png" alt="" /><small>프로필</small></a>
-      </li>
-    </ul>
-  </footer>
-  <script src="../js/search.js"></script>
-</body>
-
+    <footer id="footer_chatList" class="footer_chatList">
+      <h2 class="sr-only">메뉴 목록</h2>
+      <ul class="list_nav">
+        <li>
+          <a href="home.html" class="item_menu"
+            ><img src="../images/icon/icon-home-fill.png" alt="" /><small
+              >홈</small
+            ></a
+          >
+        </li>
+        <li>
+          <a href="chatList.html" class="item_menu"
+            ><img src="../images/icon/icon-message-circle.png" alt="" /><small
+              >채팅</small
+            ></a
+          >
+        </li>
+        <li>
+          <a href="upload.html" class="item_menu"
+            ><img src="../images/icon/icon-edit.png" alt="" /><small
+              >게시물 작성</small
+            ></a
+          >
+        </li>
+        <li>
+          <a href="myprofile.html" class="item_menu"
+            ><img src="../images/icon/icon-user.png" alt="" /><small
+              >프로필</small
+            ></a
+          >
+        </li>
+      </ul>
+    </footer>
+    <script src="../js/search.js"></script>
+  </body>
 </html>

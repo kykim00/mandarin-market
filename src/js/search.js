@@ -1,17 +1,32 @@
-const input = document.querySelector(".input_search")
-const searchedUser = input.value;
-
+const input = document.querySelector(".input_search");
 const userListContainer = document.querySelector(".list_searchResult");
 
-// input값 저장하기
-function inputData() {
-  console.log(searchedUser)
+async function keyUpHandler() {
+  const inputSearch = input.value;
+  console.log(inputSearch);
+  const data = await getSearchedUserProfile(inputSearch);
+  data.forEach((user) => {
+    const accountname = user.accountname;
+    const username = user.username;
+    if (accountname.includes(inputSearch) || username.includes(inputSearch)) {
+      const image = user.image;
+      userListContainer.innerHTML += `
+        <li class="list_user">
+          <img src="${image}" alt="" onerror="this.src='../images/basic-profile-img.png';" />
+          <div class="user_wrap">
+            <p>${username}</p>
+            <span>@ ${accountname}</span>
+          </div>
+        </li>             
+        `;
+    }
+  });
 }
 
-async function getSearchedUserProfile() {
+async function getSearchedUserProfile(searchedText) {
   const url = "http://146.56.183.55:5050";
   const token = localStorage.getItem("Token");
-  const res = await fetch(url + `/user/searchuser/?keyword=${searchedUser}`, {
+  const res = await fetch(url + `/user/searchuser/?keyword=${searchedText}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -19,54 +34,7 @@ async function getSearchedUserProfile() {
     },
   });
   const json = await res.json();
-
-
-  input.addEventListener('keyup', (event) => {
-    const inputSearch = input.value;
-    matchUserId(inputSearch, json);
-
-    if (event.keyCode === 13) {
-      matchUserId(inputSearch, json);
-      console.log('엔터');
-      input.focus();
-    }
-  })
-
-}
-//일치하는 데이터를 그려주는 부분
-function matchUserId(inputSearch, json) {
-  json.forEach(user => {
-    const accountname = user.accountname;
-    const username = user.username;
-    if (accountname.includes(inputSearch)) {
-      const image = user.image;
-      userListContainer.innerHTML = ''; //약간의 의문?.?
-      userListContainer.innerHTML += `
-        <li class="list_user">
-          <img src="${image}" alt="" />
-          <div class="user_wrap">
-            <p>${username}</p>
-            <span>@ ${accountname}</span>
-          </div>
-        </li>             
-        `;
-    }
-    else if (username.includes(inputSearch)) {
-      const image = user.image;
-      userListContainer.innerHTML = ''; //약간의 의문?.?
-      userListContainer.innerHTML += `
-        <li class="list_user">
-          <img src="${image}" alt="" />
-          <div class="user_wrap">
-            <p>${username}</p>
-            <span>@ ${accountname}</span>
-          </div>
-        </li>             
-        `;
-    }
-
-  })
-
+  return json;
 }
 
 userListContainer.addEventListener("click", (e) => {
@@ -77,6 +45,6 @@ userListContainer.addEventListener("click", (e) => {
     localStorage.setItem("searchedUserAccountname", accountname);
     location.href = "./yourprofile.html";
   }
-
 });
-getSearchedUserProfile();
+
+input.addEventListener("keyup", keyUpHandler);
