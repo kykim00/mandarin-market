@@ -110,11 +110,11 @@ function imgLoad(posts) {
       for (let i = 0; i < imgArray.length; i++) {
         imgSrc = imgArray[i];
         if (i === 0) {
-          imgTag = `<img src= "${imgSrc}" alt="" class="image_feed img_visible" id="${i}"/>`;
+          imgTag = `<img src= "${imgSrc}" alt="" class="image_feed img_visible" id="${i}" onerror="this.src='../images/basic-profile-img.png';" />`;
         } else {
           imgTag =
             imgTag +
-            `<img src= "${imgSrc}" alt="" class="image_feed img_invisible" id="${i}"/>`;
+            `<img src= "${imgSrc}" alt="" class="image_feed img_invisible" id="${i}" onerror="this.src='../images/basic-profile-img.png';" />`;
         }
       }
     }
