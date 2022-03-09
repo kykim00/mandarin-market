@@ -5,6 +5,7 @@ async function keyUpHandler() {
   const inputSearch = input.value;
   console.log(inputSearch);
   const data = await getSearchedUserProfile(inputSearch);
+  userListContainer.innerHTML = "";
   data.forEach((user) => {
     const accountname = user.accountname;
     const username = user.username;
