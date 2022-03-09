@@ -340,18 +340,18 @@ function getDataPost(posts) {
           .querySelector(".data_account")
           .textContent.substr(1);
         localStorage.setItem("searchedUserAccountname", accountname);
-        location.href = "./yourProfile.html";
+        location.href = "./yourprofile.html";
       } else if (e.target.className === "profileName") {
         const postTarget = e.target.parentNode.parentNode;
         const accountname = postTarget
           .querySelector(".data_account")
           .textContent.substr(1);
         localStorage.setItem("searchedUserAccountname", accountname);
-        location.href = "./yourProfile.html";
+        location.href = "./yourprofile.html";
       } else if (e.target.className === "data_account") {
         const accountname = e.target.textContent.substr(1);
         localStorage.setItem("searchedUserAccountname", accountname);
-        location.href = "./yourProfile.html";
+        location.href = "./yourprofile.html";
       }
     });
   });
