@@ -3,9 +3,9 @@ const userListContainer = document.querySelector(".list_searchResult");
 
 async function keyUpHandler() {
   const inputSearch = input.value;
-  if (!inputSearch) return;
   const data = await getSearchedUserProfile(inputSearch);
   userListContainer.innerHTML = "";
+  if (!inputSearch) return;
   data.forEach((user) => {
     const accountname = user.accountname;
     const username = user.username;
